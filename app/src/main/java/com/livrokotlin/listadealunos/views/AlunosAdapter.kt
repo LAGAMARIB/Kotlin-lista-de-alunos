@@ -1,5 +1,6 @@
-package com.livrokotlin.listadealunos.adapters
+package com.livrokotlin.listadealunos.views
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,9 +8,10 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.livrokotlin.listadealunos.R
+import com.livrokotlin.listadealunos.commons.CommonFunctions
 import com.livrokotlin.listadealunos.models.AlunoModel
 
-class AlunosAdapter: RecyclerView.Adapter<AlunosAdapter.AlunoViewHolder>() {
+class AlunosAdapter(private val context: Context): RecyclerView.Adapter<AlunosAdapter.AlunoViewHolder>() {
 
     private var alunos = listOf<AlunoModel>()
 
@@ -36,7 +38,9 @@ class AlunosAdapter: RecyclerView.Adapter<AlunosAdapter.AlunoViewHolder>() {
         fun bind(aluno: AlunoModel) {
             textView.text = aluno.nome
             button.setOnClickListener {
-                aluno.onRemove(aluno)
+                CommonFunctions.confirm(itemView.context) {
+                    aluno.onRemove(aluno)
+                }
             }
         }
     }

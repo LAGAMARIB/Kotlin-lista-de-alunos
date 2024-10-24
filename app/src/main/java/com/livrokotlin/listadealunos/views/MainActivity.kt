@@ -3,15 +3,10 @@ package com.livrokotlin.listadealunos.views
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.livrokotlin.listadealunos.R
-import com.livrokotlin.listadealunos.adapters.AlunosAdapter
 import com.livrokotlin.listadealunos.viewModels.AlunosViewModel
 import com.livrokotlin.listadealunos.viewModels.AlunosViewModelFactory
 
@@ -29,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val buttonInsert = findViewById<Button>(R.id.buttonInsert)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
-        val alunosAdapter = AlunosAdapter()
+        val alunosAdapter = AlunosAdapter(this )
         recyclerView.adapter = alunosAdapter
 
         buttonInsert.setOnClickListener {
